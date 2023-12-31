@@ -1,0 +1,321 @@
+@import "../var.less";
+body .cue-hw-menu {
+    width: 180px;
+    height: 100%;
+    background: @background-base;
+    box-sizing: border-box;
+    position: absolute;
+    left:0;
+    top:0;
+    transition: all 250ms ease;
+
+    &.lite-menu {
+        width: 46px;
+    }
+
+    .menu-info {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        position: relative;
+        background: @background-base;
+        border-right: solid 1px @border-color-common;
+        z-index: 102;
+
+        .toggle-btn {
+            height: 30px;
+            display: flex;
+            box-sizing: border-box;
+            align-items: center;
+            border-bottom: solid 1px @border-color-base;
+            cursor: pointer;
+
+            .icon {
+                flex: 0 0 46px;
+                line-height: 30px;
+                text-align: center;
+                font-size: 16px;
+
+                &:hover {
+                    color: #0F4D9E;
+                }
+            }
+
+            .name {
+                flex: 1;
+                width: 0;
+                white-space: nowrap;
+
+                &:hover {
+                    color: #0F4D9E;
+                }
+            }
+
+            .more {
+                flex: 0 0 26px;
+                font-size: 16px;
+            }
+        }
+
+        .collect-list {
+            box-sizing: border-box;
+            height: calc(~"100% - 30px") ;
+            /*overflow-y: auto;*/
+            overflow-x: hidden;
+
+            .collect-list-box {
+                height: 100%;
+                width: 100%;
+                box-sizing: border-box;
+
+                .el-scrollbar__bar.is-horizontal{
+                    display: none;
+                }
+            }
+
+            .collect-list-item {
+                height: 40px;
+                display: flex;
+                box-sizing: border-box;
+                cursor: pointer;
+                position: relative;
+
+                &:hover, &.active {
+                    background-color: #F9F9F9;
+                    color: #0F4D9E;
+
+                    .item-icon {
+                        display: inline-block;
+                    }
+                }
+
+                .icon {
+                    flex: 0 0 46px;
+                    line-height: 43px;
+                    text-align: center;
+                    width: 0;
+                }
+
+                .name {
+                    flex: 1;
+                    padding-right: 15px;
+                    line-height: 40px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+
+                .item-icon {
+                    padding-right: 10px;
+                    box-sizing: border-box;
+                    height: 40px;
+                    line-height: 40px;
+                    text-align: center;
+                    right: 0;
+                    top: 0;
+                    display: none;
+                    color: @color-info;
+
+                    &:hover {
+                        color: #0F4D9E;
+                    }
+                }
+            }
+        }
+    }
+
+    .menu-container {
+        position: absolute;
+        box-sizing: border-box;
+        height: 100%;
+        width: 1024px;
+        right: 0;
+        top: 0;
+        background-color: @background-base;
+        z-index: 101;
+        border-right: solid 1px @border-color-base;
+        transition: all 200ms ease;
+        visibility: hidden;
+        padding: 20px;
+
+        .menu-close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .menu-search {
+            width: 70%;
+            margin-bottom: 20px;
+            padding-left: 18px;
+
+            .el-input__suffix {
+                right: 5px;
+
+                i.el-icon-search {
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .menu-list {
+            height: calc(~"100% - 48px");
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            .menu-list-item-box {
+                &:after {
+                    content: "";
+                    display: block;
+                    clear: both;
+                    visibility: hidden;
+                    height: 0;
+                }
+            }
+
+            .menu-list-item {
+                margin-bottom: 15px;
+                width: 25%;
+                padding: 0 15px;
+                float: left;
+                box-sizing: border-box;
+                color: #333333;
+
+                .list-item {
+                    display: flex;
+
+                    i.icon {
+                        flex: 0 0 25px;
+                    }
+
+                    .name {
+                        flex: 1;
+                    }
+
+                    &.disabled {
+                        color: #999999;
+                    }
+                }
+
+                .lv2-ul {
+                    padding: 0px 0;
+                }
+
+                .lv3-ul {
+                    padding: 5px 0;
+                }
+
+                .lv1 {
+                    box-sizing: border-box;
+                    line-height: 29px;
+                    height: 30px;
+
+                    i.icon {
+                        font-size: 16px;
+                        color: #0F4D9E;
+                        line-height: 31px;
+                    }
+
+                    .name {
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+
+                    &.link {
+                        cursor: pointer;
+
+                        i.collect-icon {
+                            position: absolute;
+                            right: 0;
+                            top: 0;
+                            color: #999999;
+                            line-height: 35px;
+                            cursor: pointer;
+                            display: none;
+                        }
+
+                        &:hover, &.active {
+                            color: #0F4D9E;
+
+                            i.collect-icon {
+                                display: block;
+                                color: #999999;
+                            }
+                        }
+
+                        &.collect {
+
+                            i.collect-icon {
+                                display: block;
+                                color: #0F4D9E;
+                            }
+                        }
+
+                    }
+                }
+
+                .lv2.nolink {
+                    height: 28px;
+                    line-height: 28px;
+                    padding: 0 10px 0 25px;
+                    background-color: #F9F9F9;
+                    color: #0F4D9E;
+                    background-image: url(../../../packages2/HwMenu/src/cue-menu-icon.png);
+                    background-repeat: no-repeat;
+                    background-position: 6px;
+                    background-size: 16px;
+
+                    i.icon {
+                        font-size: 12px;
+                    }
+                }
+
+                .lv2.link, .lv3 {
+                    padding: 0 10px 0 25px;
+                    height: 28px;
+                    line-height: 28px;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                    position: relative;
+
+                    i.collect-icon {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        color: #999999;
+                        line-height: 28px;
+                        cursor: pointer;
+                        display: none;
+                    }
+
+                    &:hover, &.active {
+                        border-bottom: solid 1px #0F4D9E;
+                        color: #0F4D9E;
+
+                        i.collect-icon {
+                            display: block;
+                            color: #999999;
+                        }
+                    }
+
+                    &.collect {
+
+                        i.collect-icon {
+                            display: block;
+                            color: #0F4D9E;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.show-menu {
+            visibility: visible;
+            right: -1024px;
+        }
+
+    }
+}
+

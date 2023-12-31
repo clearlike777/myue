@@ -1,0 +1,45 @@
+.scroll-table {
+    height: 100%;
+    width: calc(~ "100% - 24px");
+    // position: relative;
+    .header-table {
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        color: #5D6A72;
+        font-size: 14px;
+    }
+    .body-table {
+        .hover {
+            &:hover {
+                cursor: pointer;
+                // background: rgb(239, 242, 247);
+                // color: #127d9f;
+            }
+            .cell {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-family: Arial;
+                font-weight: 100;
+            }
+        }
+        .currentRow {
+            background: rgb(113, 161, 238);
+            td {
+                color: #fff;
+            }
+            // border: 1px solid #127d9f;
+        }
+    }
+    table {
+        table-layout: fixed;
+        height: 100%;
+        width: 100%;
+        font-size: 12px;
+        color: #fff;
+        td {
+            text-align: center;
+        }
+    }
+}

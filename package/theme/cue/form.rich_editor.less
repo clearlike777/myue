@@ -1,0 +1,279 @@
+@import "../var.less";
+
+body {
+
+    .cue-rich-editor {
+        display: inline-block;
+        width: 100%;
+
+        &:hover > .mce-tinymce {
+            border-color: @border-color-hover;
+        }
+
+
+        &.is-focus > .mce-tinymce {
+            border-color: @color-primary;
+        }
+    }
+
+    .mce-tinymce {
+        border-radius: @border-radius-base;
+        box-shadow: none;
+        box-sizing: border-box;
+
+        &.mce-fullscreen {
+            z-index: 9999;
+        }
+
+        .mce-menubar {
+            border-color: @border-color-base;
+        }
+
+        .mce-btn-group {
+            border-color: @border-color-base;
+        }
+
+        .mce-top-part:before {
+            content: none;
+        }
+    }
+
+    .mce-panel {
+        border-color: @border-color-base;
+
+        .mce-btn.mce-active, .mce-btn.mce-active:hover, .mce-btn.mce-active:focus, .mce-btn.mce-active:active {
+            background: @color-primary;
+
+            &.mce-listbox {
+                background: transparent;
+                border-color: @color-primary;
+
+                .mce-txt {
+                    color: #595959;
+                }
+
+                .mce-caret {
+                    border-top-color: #b5bcc2;
+                }
+            }
+
+            &.mce-menubtn {
+                background: transparent;
+            }
+        }
+    }
+
+    .mce-menu {
+        border-color: @border-color-base;
+    }
+
+    .mce-menu-item.mce-active.mce-menu-item-normal {
+        background: transparent;
+
+        .mce-text {
+            font-weight: bold;
+            color: @color-primary;
+        }
+
+        .mce-ico {
+            color: @color-primary;
+        }
+    }
+
+    // 弹出框
+    #mce-modal-block {
+        opacity: 0.5;
+        background: #000;
+    }
+
+    .mce-window {
+        border-radius: @border-radius-base;
+        border: 0;
+        overflow: hidden;
+
+        .mce-window-head {
+            padding: 9px 20px 0 20px;
+            height: 40px;
+            border-bottom: 1px solid @border-color-base;
+            box-sizing: border-box;
+            background: @element-dialog-header-background;
+
+            .mce-title {
+                color: @element-dialog-header-color;
+                font-weight: normal;
+                font-size: @font-size-base;
+                height: 24px;
+                line-height: 24px;
+            }
+
+            .mce-close {
+                right: 20px;
+                top: 12px;
+                height: 16px;
+                line-height: 16px;
+                width: 16px;
+
+                i {
+                    color: @color-info;
+                    font-family: "element-icons";
+
+                    &:before {
+                        content: "\E6DB";
+                    }
+                }
+
+                &:hover i {
+                    color: @color-primary;
+                }
+
+
+            }
+        }
+
+        .mce-window-body {
+
+            .mce-widget.mce-label {
+                font-size: @font-size-base;
+                color: @form-label-color;
+            }
+
+            .mce-textbox, .mce-widget {
+                font-size: @font-size-base;
+                border-color: @border-color-base;
+                border-radius: @border-radius-base;
+                color: @color-black;
+
+                &:hover {
+                    border-color: @border-color-hover;
+                }
+
+                &:focus {
+                    border-color: @border-color-focus;
+                }
+            }
+        }
+
+        .mce-foot {
+            border-top: 0 !important;
+
+            > .mce-container-body {
+                padding: 8px 26px 0 26px;
+                box-sizing: border-box;
+            }
+
+            .mce-btn {
+                border-radius: @border-radius-base;
+                border-color: @border-color-base;
+                box-sizing: border-box;
+                width: auto !important;
+                position: static;
+                float: right;
+                margin-left: 10px;
+
+                > button {
+                    padding: 0 12px;
+                    line-height: 28px;
+                    font-size: @font-size-base;
+                    color: @color-black;
+
+
+                }
+
+                &:hover, &:focus {
+                    border-color: @button-circle-hover-border-color;
+                    background-color: @button-circle-hover-background-color;
+
+                    > button {
+                        color: @color-primary;
+                    }
+                }
+
+                &:active {
+                    border-color: @color-primary;
+                    background-color: mix(@color-white, @color-primary, 90%);
+                    outline: none;
+
+                    > button {
+                        color: @color-primary;
+                    }
+                }
+
+                &.mce-primary {
+                    background: @color-primary;
+                    border-color: @color-primary;
+
+                    > button {
+                        color: @color-white;
+                    }
+
+                    &:hover, &:focus {
+                        border-color: mix(@color-white, @color-primary, @button-hover-tint-percent);
+                        background-color: mix(@color-white, @color-primary, @button-hover-tint-percent);
+
+                        > button {
+                            color: @color-white;
+                        }
+                    }
+
+                    &:active {
+                        border-color: mix(@color-black, @color-primary, 10%);
+                        background-color: mix(@color-black, @color-primary, 10%);
+
+                        > button {
+                            color: @color-white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 复选框
+    .mce-checkbox {
+        .mce-label {
+            font-size: @font-size-base;
+        }
+
+        .mce-i-checkbox {
+            height: 14px;
+            width: 14px;
+            box-sizing: border-box;
+            border-color: @border-color-base;
+            border-radius: @border-radius-base;
+            vertical-align: middle;
+
+            &:before {
+                content: none
+            }
+
+            &:after {
+                box-sizing: content-box;
+                content: "";
+                border: 1px solid #fff;
+                border-left: 0;
+                border-top: 0;
+                height: 7px;
+                left: 4px;
+                position: absolute;
+                top: 1px;
+                transform: rotate(45deg) scaleY(0);
+                transition: transform .15s ease-in .05s, -webkit-transform .15s ease-in .05s;
+                width: 3px;
+            }
+
+            &:hover, &:focus {
+                border-color: @color-primary;
+            }
+        }
+
+        &.mce-checked .mce-i-checkbox {
+            background: @color-primary;
+            border-color: @color-primary;
+            position: relative;
+
+            &:after {
+                transform: rotate(45deg) scaleY(1);
+            }
+        }
+    }
+}

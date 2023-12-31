@@ -1,0 +1,596 @@
+@import "../var.less";
+
+body {
+    // 图表
+    div.hd-chart-box {
+        width: 100%;
+        height: 100%;
+
+        div.hd-chart {
+            width: 100%;
+            height: 100%;
+            background: @background-base;
+        }
+    }
+
+    // htable
+    div.htable {
+        border-left: 1px solid @table-border-color;
+        border-right: 1px solid @table-border-color;
+
+        .handsontable {
+            // 字体、颜色
+            th {
+                font-weight: bold;
+                color: @table-header-color;
+                background: @table-header-background;
+            }
+
+            td {
+                color: @table-color;
+                background: @table-background;
+            }
+
+            // 行高内边距
+            th {
+                line-height: 23px;
+                padding: 3px 0;
+                height: auto;
+                box-sizing: border-box;
+                vertical-align: top;
+
+                > .relative {
+                    padding: 0 5px;
+                }
+            }
+
+            td {
+                line-height: 22px;
+                padding: 2px 5px;
+                height: auto;
+                box-sizing: border-box;
+                vertical-align: middle;
+
+                &:empty:before {
+                    // 整行都是空单元格，导致错行
+                    content: " ";
+                    display: inline-block;
+                }
+            }
+
+            // 边框颜色
+            th, td {
+                border-color: @table-border-color;
+            }
+
+            // 边框调整
+            table.htCore > tbody > tr:first-child > td {
+                border-top: 0;
+            }
+
+            table.htCore {
+                > thead > tr > th {
+                    border-left: 0;
+                }
+
+                > tbody > tr > td {
+                    border-left: 0;
+                }
+            }
+
+            &.ht_master:not(.innerBorderTop) thead tr:last-child th,
+            &.ht_master:not(.innerBorderTop) ~ .handsontable thead tr:last-child th,
+            &.ht_master:not(.innerBorderTop) thead tr.lastChild th,
+            &.ht_master:not(.innerBorderTop) ~ .handsontable thead tr.lastChild th {
+                border-bottom-width: 1px;
+            }
+
+            //复合表头
+            table.htCore > thead > tr {
+                th {
+                    &.rowspan {
+                        border-bottom: @table-header-background 1px solid;
+                    }
+
+                    &.hiddenHeaderRow {
+                        border-bottom: @table-header-background 1px solid;
+
+                        > .relative:after {
+                            // 遮挡表头文本
+                            content: "";
+                            position: absolute;
+                            background: @table-header-background;
+                            width: 100%;
+                            height: 100%;
+                            top: 0;
+                            left: 0;
+                        }
+                    }
+                }
+
+                &:last-child > th.hiddenHeaderRow {
+                    border-bottom: 1px @table-border-color solid;
+                }
+            }
+
+            // 取消单元格选中
+            td[class*=area]:before {
+                content: none;
+            }
+
+            .htBorders{
+                display: none;
+            }
+        }
+
+        // 斑马线
+        &.stripe table.htCore tbody tr:nth-child(2n +1) {
+            > td {
+                background: @table-tr-stripe;
+            }
+        }
+
+        // 当前行、选中行
+        table.htCore tr.htable-current-row > td,
+        &.stripe table.htCore tr:nth-child(2n +1).htable-current-row > td {
+            background: @table-tr-highlight;
+        }
+
+        // 悬浮行
+        table.htCore tr.htable-hover-row > td,
+        &.stripe table.htCore tr:nth-child(2n +1).htable-hover-row > td {
+            background: @table-tr-highlight;
+        }
+
+        // 表格上下边框
+        &:before {
+            content: "";
+            position: absolute;
+            background: @table-border-color;
+            z-index: 1;
+            width: 100%;
+            height: 1px;
+            top: 0;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            background: @table-border-color;
+            z-index: 199;
+            width: 100%;
+            height: 1px;
+            bottom: 0;
+        }
+
+        // 取消选中边框
+        //.wtBorder {
+        //    background-color: transparent !important;
+        //}
+    }
+
+    // hd-report
+    div.hd-report {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+        background: @background-base;
+
+        > div.hd-report-header {
+            width: 100%;
+            overflow: hidden;
+            border-bottom: @report-top-split-line;
+            padding: 3px 0;
+            line-height: 30px;
+
+            > div.hd-report-title {
+                float: left;
+                margin-right: 10px;
+
+                > span {
+                    border-left: 2px solid @color-primary;
+                    font-size: 16px;
+                    line-height: 16px;
+                    padding-left: 4px;
+                }
+            }
+
+            > div.hd-report-conditions {
+                float: left;
+                margin-left: 4px;
+            }
+
+            > div.hd-report-command {
+                float: left;
+                line-height: 28px;
+            }
+
+            > div.hd-report-checkbox {
+                float: left;
+                margin-left: 20px;
+                line-height: 28px;
+            }
+
+            > div.hd-report-tools {
+                float: right;
+                height: 30px;
+                margin-right: 5px;
+
+                > * {
+                    float: left;
+                    margin-left: 8px;
+                    line-height: 0;
+                }
+            }
+
+            // 顶部搜索栏
+            div.hd-topbar {
+                overflow: hidden;
+                line-height: 30px;
+                font-size: 12px;
+                box-sizing: border-box;
+
+                > div.hd-topbar-item {
+                    height: 100%;
+                    float: left;
+                    display: block;
+                    margin-right: 10px;
+                    white-space: nowrap;
+
+                    > label.hd-topbar-label {
+                        display: inline-block;
+                        padding-right: 5px;
+                    }
+
+                    > div.hd-topbar-box {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+
+        > div.hd-report-body {
+            box-sizing: border-box;
+            position: relative;
+            border-left: 1px solid @table-border-color;
+
+            &:before {
+                content: '';
+                position: absolute;
+                background-color: @table-border-color;
+                z-index: 1;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 1px;
+            }
+
+            &:after {
+                content: '';
+                position: absolute;
+                background-color: @table-border-color;
+                z-index: 1;
+                right: 0;
+                top: 0;
+                height: 100%;
+                width: 1px;
+            }
+
+            > .hd-report-report {
+                div.el-table, div.htable {
+                    border: 0;
+
+                    &:after, &:before {
+                        display: none;
+                    }
+                }
+            }
+
+            > div.hd-report-chart {
+                .vue-chart {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+
+            div.hd-report-custom {
+                overflow: auto;
+                box-sizing: border-box;
+            }
+        }
+
+        > div.hd-report-footer {
+            height: 40px;
+            padding: 0 10px;
+            background-color: #f5f5f5;
+            border: 1px solid @table-border-color;
+            border-top: 0;
+            box-sizing: border-box;
+
+            > div.hd-report-tabs {
+                padding-top: 6px;
+                float: left;
+            }
+
+            > div.hd-footer-message {
+                padding-top: 4px;
+                float: right;
+                height: 100%;
+                line-height: 2.2;
+                color: @table-color;
+                font-size: 14px;
+            }
+
+            > div.hd-report-pager {
+                padding-top: 4px;
+                float: right;
+
+                .el-pagination {
+                    button {
+                        background: transparent;
+
+                        &:disabled {
+                            background: transparent;
+                        }
+                    }
+                }
+
+                .el-pager li {
+                    background: transparent;
+                }
+            }
+        }
+    }
+
+    // crud
+    div.hd-crud {
+        width: 100%;
+        box-sizing: border-box;
+        background: @background-base;
+        overflow: hidden;
+
+        > div.hd-report-body {
+            div.hd-report-bottom {
+                position: relative;
+                padding: 0 10px;
+                background-color: #f5f5f5;
+                width: 100%;
+                box-sizing: border-box;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    background-color: @table-border-color;
+                    z-index: 1;
+                    left: 0;
+                    top: -1px;
+                    height: 1px;
+                    width: 100%;
+                }
+
+                .hd-report-bottom-div1 {
+                    font-size: 18px;
+                    width: 10%;
+                    border-right: 1px solid @table-border-color;
+                    height: 100%;
+                    text-align: center;
+                    float: left;
+                }
+
+                .hd-report-bottom-div2 {
+                    width: 80%;
+                    float: left;
+                    overflow: auto;
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+    // crud dialog
+    div.hd-crud-dialog.el-dialog {
+        .el-dialog__body {
+            padding: 26px 11px 14px 11px;
+        }
+
+        .el-dialog__footer > .el-button {
+            float: right;
+            margin-left: 10px;
+        }
+    }
+}
+
+
+// cue-report
+body {
+    .cue-report-group {
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .cue-report {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-sizing: border-box;
+        flex-wrap: nowrap;
+        flex: 1;
+        flex-basis: auto;
+
+        &:after {
+            position: absolute;
+            content: "";
+            display: block;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: @table-border-color;
+            z-index: 10;
+        }
+    }
+
+    .cue-report__header {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding: 3px 5px 3px 0;
+        box-sizing: border-box;
+        align-items: flex-start;
+        flex-shrink: 0;
+        flex-grow: 0;
+        min-height: 34px;
+    }
+
+    .cue-report__header-title {
+        flex-shrink: 0;
+        line-height: 20px;
+        height: 20px;
+        font-size: 16px;
+        margin: 3px 10px 5px 0;
+        border-left: 2px solid @color-primary;
+        padding-left: 5px;
+    }
+
+    .cue-report__header-left {
+        display: inline-flex;
+        flex-grow: 1;
+        margin-left: 5px;
+    }
+
+    .cue-report__header-condition {
+        display: inline-flex;
+        flex-grow: 1;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+    }
+
+    .cue-report__header-content {
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+
+        &:not(:empty) {
+            margin-right: 10px;
+        }
+    }
+
+    .cue-report__header-right {
+        display: inline-flex;
+        padding-left: 20px;
+        flex-shrink: 0;
+
+        .el-button {
+            margin-left: 10px;
+        }
+    }
+
+    .cue-report__header-more {
+        display: inline-block;
+        margin: 5px 0 5px 10px;
+        cursor: pointer;
+        color: @color-primary;
+        line-height: 16px;
+        width: 70px;
+
+        i {
+            font-size: 16px;
+            vertical-align: -1px;
+            color: @color-info;
+        }
+    }
+
+    .cue-report__banner {
+        display: block;
+        flex-shrink: 0;
+        flex-grow: 0;
+        width: 100%;
+        padding: 6px;
+        box-sizing: border-box;
+        text-align: left;
+        border-top: 1px solid @table-border-color;
+        margin: 3px 0;
+    }
+
+    .cue-report__body {
+        display: inline-flex;
+        box-sizing: border-box;
+        //border: 1px solid @table-border-color;
+        border-top: @report-top-split-line;
+        flex: 1;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+
+        &:before {
+            position: absolute;
+            content: "";
+            display: block;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 1px;
+            background: @table-border-color;
+            z-index: 10;
+        }
+
+        &:after {
+            position: absolute;
+            content: "";
+            display: block;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 1px;
+            background: @table-border-color;
+            z-index: 10;
+        }
+
+        .cue-report__body-border-bottom {
+            position: absolute;
+            content: "";
+            display: block;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 1px;
+            background: @table-border-color;
+            z-index: 10;
+        }
+    }
+
+    .cue-report__footer {
+        display: inline-flex;
+        height: 40px;
+        padding: 0 10px;
+        background-color: #f5f5f5;
+        border-left: 1px solid @table-border-color;
+        border-right: 1px solid @table-border-color;
+        box-sizing: border-box;
+        flex-shrink: 0;
+        flex-grow: 0;
+        justify-content: space-between;
+    }
+
+    .cue-report__footer-tab {
+        overflow: hidden;
+
+        > .el-button-group {
+            float: left;
+            margin-top: 6px;
+        }
+    }
+
+    .cue-report__footer-pager {
+        padding-top: 4px;
+    }
+}

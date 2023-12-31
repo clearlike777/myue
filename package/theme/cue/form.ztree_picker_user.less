@@ -1,0 +1,68 @@
+@import "../var.less";
+
+body {
+
+    // ztree-input
+    div.cue-ztree-picker-user {
+        > span {
+            display: inline-block;
+            width: 100%;
+        }
+
+        input.el-input__inner {
+            text-overflow: ellipsis;
+        }
+    }
+
+    .el-dialog .picker-user-container {
+        height: 400px;
+        width: 100%;
+    }
+
+    .el-dialog .picker-user-mainbody {
+        height: 100%;
+        display: flex;
+
+        .picker__tree {
+            flex: 1;
+            max-width: 280px;
+        }
+
+        .picker__handle {
+            flex: 0 0 80px;
+            display: flex;
+            flex-direction: column;
+            padding: 0 10px;
+            justify-content: center;
+            box-sizing: border-box;
+
+            .el-button.el-button--mini {
+                margin: 5px 0;
+            }
+        }
+
+        .picker__table {
+            flex: 1;
+            width: 0;
+            overflow-x: auto;
+
+            .cue-crud {
+                min-width: 300px;
+            }
+
+            .header__text {
+                font-size: 14px;
+                line-height: 20px;
+                height: 20px;
+                font-size: 14px;
+                margin: 3px 0 5px 0;
+
+                > span {
+                    color: @color-success;
+                }
+            }
+        }
+    }
+
+
+}

@@ -1,0 +1,21 @@
+@import "../var.less";
+
+body {
+    .cue-table {
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+
+        .el-table {
+            border: 1px solid @table-border-color;
+
+            &:after, &:before {
+                display: none;
+            }
+        }
+
+        .cue-table__export {
+            display: none;
+        }
+    }
+}

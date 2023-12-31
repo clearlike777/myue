@@ -1,0 +1,9 @@
+@PATH: default;
+
+@import "./heda.less";
+
+.IMPORT(@p) {
+    @import "./element-ui/@{p}/dict/index.css";
+}
+
+.IMPORT(@p: @PATH);

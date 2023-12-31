@@ -1,0 +1,16 @@
+{
+  "name": "element-ui-green",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "et"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "element-theme-chalk": "^2.13.0"
+  },
+  "element-theme": {
+    "out": "./dict",
+    "config": "./element-variables.scss",
+    "theme": "element-theme-chalk"
+  }
+}

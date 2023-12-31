@@ -1,0 +1,105 @@
+@import "../var.less";
+body {
+    // 标签栏样式
+    .tags-view-container {
+        width: 100%;
+        background: @page-tag-container-background;
+        height: @page-tag-container-height;
+        color: @page-tag-color;
+        font-size: @font-size-base;
+        .tabs {
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            margin-right: 120px;
+            .tags-view-wrapper {
+                height: 100%;
+            }
+        }
+
+        i.iconfont, i[class^="el-icon-"] {
+            height: @page-tag-icon-size;
+            line-height: @page-tag-icon-size;
+            width: @page-tag-icon-size;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .tags-view-item {
+            display: inline-block;
+            position: relative;
+            margin: 1px 0 0 1px;
+            height: calc(@page-tag-container-height - 1px);
+            background: @page-tag-background;
+            padding: 7px 10px 6px 10px;
+            box-sizing: border-box;
+            cursor: pointer;
+            &.active {
+                background: @page-tag-background-active;
+                color: @page-tag-color-active;
+                > i.icon-biaoqian2 {
+                    color: @page-tag-color-icon-active;
+                }
+            }
+            > * {
+                display: block;
+                float: left;
+                height: @page-tag-icon-size;
+                line-height: @page-tag-icon-size;
+            }
+            > i {
+                &.icon-biaoqian2 {
+                    margin: 2px 10px 0 0;
+                }
+                &.el-icon-close {
+                    margin: 1px 0 0 10px;
+                    &:hover {
+                        font-weight: bold;
+                        color: @page-tag-color-icon-active
+                    }
+                }
+            }
+
+        }
+
+        .tools {
+            float: right;
+            width: 120px;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 7px 0;
+            a {
+                display: block;
+                float: right;
+                margin-right: 10px;
+                cursor: pointer;
+                i {
+                    float: left;
+                    font-size: @page-tag-icon-size;
+                    &.icon-quanping{
+                        margin-top: 2px;
+                    }
+                }
+                &:hover {
+                    color: @page-tag-color-active;
+                }
+            }
+        }
+
+        &.is-fullscreen {
+            background: none;
+            height: @page-tag-container-height;
+            position: absolute;
+            z-index: 2;
+            > * {
+                display: none;
+            }
+            &:hover {
+                background: @page-tag-container-background;
+                > * {
+                    display: block;
+                }
+            }
+        }
+    }
+}

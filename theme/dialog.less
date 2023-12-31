@@ -1,0 +1,68 @@
+@import "var.less";
+
+body {
+  .el-dialog {
+    padding: 0 0 14px 0;
+
+    .el-dialog__header {
+      padding: 9px 20px 0 20px;
+      height: 40px;
+      border-bottom: 1px solid #cbd5dd;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      background: #f5f7fa;
+      .el-dialog__title{
+        font: 12px/1.5 Microsoft YaHei,Arial,Hiragino Sans GB,PingFang SC,Helvetica,Verdana,"\5FAE\8F6F\96C5\9ED1",sans-serif;
+      }
+      .el-dialog__headerbtn{
+        margin: -8px;
+        vertical-align: middle;
+        font: 12px/1.5 Microsoft YaHei,Arial,Hiragino Sans GB,PingFang SC,Helvetica,Verdana,"\5FAE\8F6F\96C5\9ED1",sans-serif;
+
+      }
+    }
+
+    .el-dialog__body {
+      padding: 0;
+    }
+
+    .el-dialog__footer{
+      padding: 14px 26px 0 26px;
+      button{
+        height: 25px;
+        vertical-align: middle;
+        padding-bottom:0px; padding-top:3px; cursor:pointer;
+        font-size: 12px;
+      }
+    }
+
+    &.cue-crud__form-dialog > .el-dialog__body {
+      padding: 0;
+    }
+
+    .cue-dialog-tab-icon {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      margin-right: 3px;
+      line-height: 18px;
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    .cue-dialog-tab-title {
+      display: inline-block;
+      height: 18px;
+      line-height: 18px;
+    }
+  }
+
+  .cue-dialog-view {
+    padding: 6px 6px 0 6px;
+    box-sizing: border-box;
+
+    &.wide-padding {
+      padding: 26px 26px 0 26px;
+    }
+  }
+}

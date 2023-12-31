@@ -1,0 +1,43 @@
+@import "../var.less";
+
+body {
+
+    // ztree-input
+    div.cue-ztree-picker {
+        > span {
+            display: inline-block;
+            width: 100%;
+        }
+
+        input.el-input__inner {
+            text-overflow: ellipsis;
+        }
+    }
+
+    .cue-ztree-picker__pop {
+        .cue-ztree-picker__pop-header {
+            width: 100%;
+            height: 40px;
+            padding: 6px;
+            box-sizing: border-box;
+            border-bottom: 1px solid @border-color-base;
+        }
+
+        div.cue-ztree-picker__pop-box {
+            height: 100%;
+            width: 100%;
+
+            .ztree {
+                border: 0;
+            }
+        }
+
+        .cue-ztree-picker__pop-footer {
+            width: 100%;
+            height: 40px;
+            padding: 6px;
+            box-sizing: border-box;
+            text-align: right;
+        }
+    }
+}

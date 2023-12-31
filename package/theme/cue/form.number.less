@@ -1,0 +1,27 @@
+@import "../var.less";
+
+body {
+
+  .cue-input-number {
+    &.el-input.el-input-group.el-input-group--append {
+      .el-input__inner {
+        border-right: 0;
+      }
+
+      .el-input-group__append {
+        border: 1px solid @border-color-base;
+        border-left: 0;
+        background-color: inherit;
+        padding: 0;
+        color: @border-color-base;
+        padding: 0 5px;
+      }
+
+      .el-input-group__append {
+        border-radius: 0 2px 2px 0;
+      }
+    }
+
+  }
+
+}

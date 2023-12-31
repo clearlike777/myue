@@ -1,0 +1,44 @@
+@import "../var.less";
+// 框架样式
+html, body {
+    height: 100%;
+}
+#app {
+    height: 100%;
+    background: @background-base;
+    .app-header {
+        background: @platform-header-background;
+        color: @platform-header-color-active;
+        .sys-name {
+            float: left;
+            margin-left: 16px;
+            height: 100%;
+            > a {
+                height: 100%;
+                margin-right: 16px;
+                display: inline-block;
+                float: left;
+                .hd-logo {
+                    border: none;
+                    max-height: 100%;
+                    position: relative;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+            .custom-name {
+                color: @platform-header-color-active;
+                font-size: 18px;
+                font-weight: bold;
+                height: 100%;
+                display: inline-block;
+            }
+        }
+    }
+    .app-page{
+        height:100%;
+        background-color: @background-base;
+        position: relative;
+        overflow: hidden;
+    }
+}

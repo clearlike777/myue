@@ -1,0 +1,159 @@
+@import "../var.less";
+
+body {
+    .cue-tabs {
+        display: flex;
+        align-items: center;
+        height: 38px;
+        line-height: 38px;
+
+        * {
+            box-sizing: border-box
+        }
+
+        .cue-tabs-label {
+            display: flex;
+            align-items: center;
+            padding-right: 15px;
+            margin-right: 10px;
+            position: relative;
+
+            .label-text {
+                padding-left: 5px;
+            }
+
+            &:after {
+                position: absolute;
+                content: "";
+                right: 0;
+                top: 9px;
+                height: 20px;
+                width: 1px;
+                background-color: @page-tag-color;
+            }
+
+            .tab-current {
+                line-height: 26px;
+                padding: 0 15px;
+                border: solid 1px @color-primary;
+                border-radius: 2px;
+                background-color: @color-primary;
+                color: @color-white;
+            }
+        }
+
+        .cue-tabs-showall {
+            flex: 0 0 75px;
+            padding-left: 15px;
+            padding-right: 5px;
+            margin-left: 10px;
+            position: relative;
+            cursor: pointer;
+
+            &:after {
+                position: absolute;
+                content: "";
+                left: 0;
+                top: 9px;
+                height: 20px;
+                width: 1px;
+                background-color: @page-tag-color;
+            }
+        }
+
+        .cue-tabs-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            width: 0;
+
+            .el-tabs.el-tabs--bottom {
+                width: 100%;
+
+                .el-tabs__header.is-bottom {
+                    margin-top: 0;
+                }
+
+                .el-tabs__item {
+                    height: 26px;
+                    line-height: 26px;
+                    font-weight: normal;
+                    padding: 0 3px;
+                    box-sizing: border-box;
+                    font-size: 12px;
+
+                    &.is-active{
+                        .label-content{
+                            border-color: @color-primary;
+                            color: @color-white;
+                            background: @color-primary;
+                        }
+                    }
+
+                    &.is-bottom:nth-child(2) {
+                        padding: 0 3px;
+                    }
+
+                    .label-content {
+                        padding: 0 15px;
+                        border: solid 1px @page-tag-color;
+                        border-radius: 2px;
+                        box-sizing: border-box;
+                    }
+
+                }
+
+                .el-tabs__active-bar {
+                    display: none;
+                }
+
+                .el-tabs__nav-wrap::after {
+                    display: none;
+                }
+
+                .el-tabs__nav-next, .el-tabs__nav-prev{
+                    line-height: 38px;
+                }
+            }
+        }
+    }
+
+    .el-dropdown-menu__item {
+        position: relative;
+        &.current{
+            background-color: #edf5fd;
+            color: @color-primary;
+        }
+
+        .cue-tabs-sub-item {
+            line-height:28px;
+
+            .third-menu {
+                position: absolute;
+                left: 100%;
+                bottom: 0;
+                display: none;
+                border: solid 1px @page-tag-color;
+                padding: 4px 0;
+                background-color: @color-white;
+
+                li {
+                    padding: 0 10px;
+                    white-space: nowrap;
+                    color: @color-black;
+
+                    &.current, &:hover {
+                        background-color: #edf5fd;
+                        color: @color-primary;
+                    }
+                }
+            }
+        }
+
+        &:hover .cue-tabs-sub-item {
+            .third-menu {
+                display: block;
+            }
+        }
+    }
+}
